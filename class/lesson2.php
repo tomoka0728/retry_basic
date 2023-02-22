@@ -20,11 +20,11 @@ class Patient extends Person{
 // __construct(name: string, age:int, gender: string, height: float, weight: float)
 // 名前、年齢、性別、身長、体重を受け取り初期化する。
     function __construct($name, $age, $gender, $height, $weight)	{
-        $this->name;
-        $this->age;
-        $this->gender;
-        $this->height;
-        $this->weight;
+        $this->name = $name;
+        $this->age = $age;
+        $this->gender = $gender;
+        $this->height = $height;
+        $this->weight = $weight;
     }
 
     // calculateStandardWeight() :float
@@ -33,11 +33,10 @@ class Patient extends Person{
         return $this->height * $this->height * 22;
     }
 
-
     // getHeight()
     // 身長を返す
     function getHeight(){
-        return $this->height;
+        return $this->height * 100;
     }
 
     // getWeight()
@@ -45,13 +44,16 @@ class Patient extends Person{
     function getWeight(){
         return $this->weight;
     }
+
+    public function selfIntroduction(): string{
+        return $this->name. 'さんの身長は'. $this->getHeight(). 'cmなので平均体重は'. $this->calculateStandardWeight(). 'kgです。'
+        . '現在の体重は'. $this->getWeight(). 'kgです。';
+    }
 }
 // クラスが完成したら適当なインスタンスを生成し、
 // それぞれの関数を使用して下記のフォーマットで出力してください。
 
 // 〇〇さんの身長は〇〇mなので平均体重は〇〇kgです。 現在の体重は〇〇kgです。
 $patient = new Patient('山田太郎', 30, '男性', 1.65, 63.5);
-
-echo $patient->name. 'さんの身長は'. ($patient->height * 100). 'cmなので平均体重は'. $patient->calculateStandardWeight(). 'kgです。'
-    . '現在の体重は'. $patient->weight. 'kgです。';
+echo $patient->selfIntroduction();
 ?>
