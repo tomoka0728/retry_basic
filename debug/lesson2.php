@@ -1,5 +1,4 @@
 <?php
-
 // デバック練習
 // 氏名入力時に入力内容が表示されるようにプログラムを完成させてください。
 
@@ -53,6 +52,9 @@ if (! empty($_POST)) {
     $firstName        = $_POST['first_name'];
     $age              = $_POST['age'];
     $hobby            = $_POST['hobby'];
+
+    $selfIntroduction = new SelfIntroduction($lastName, $firstName, $age, $hobby);
+
     if ($selfIntroduction) {
         echo '私の名前は'.$selfIntroduction->getFullName().'年齢は'.$selfIntroduction->getAge().'です。';
         echo '<br>';
@@ -85,4 +87,3 @@ if (! empty($_POST)) {
     </section>
 </body>
 </html>
-
